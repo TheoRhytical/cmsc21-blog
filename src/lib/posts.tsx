@@ -22,13 +22,21 @@ export async function getAllPostIds() {
 }
 
 
-// export async function getAllPostMeta() {
-// 	const fileNames = fs.readdirSync(postDirectory);
+export async function getAllPostMetaData() {
+	const fileNames = fs.readdirSync(postDirectory);
+	// console.log(fileNames)
+	return fileNames.map(fileName => {
+		const key = Number(fileName.replace(/\.md$/, ''));
+		const fullPath = path.join(postDirectory, fileName);
+		const fileContents = fs.readFileSync(fullPath, 'utf8');
 
-// 	return fileNames.map(fileName => {
-// 		const fullPath = path.join(postDirectory, fileName
-// 	});
-// }
+		const { data: metadata } = matter(fileContents);
+		return {
+			id: key,
+			...metadata
+		};
+	});
+}
 
 
 export async function getPostData(id: number) {

@@ -1,11 +1,11 @@
 import Link from 'next/link';
 
-type Props = {
-	link: string,
-	text: string
-}
+interface PropsInterface {
+	link: string;
+	text: string;
+};
 
-export default function NavLink({ link, text}: Props) {
+export default function NavLink({ link, text}: PropsInterface) {
 	return (
 		<li>
 			<Link href={`${link}`}>{ text }</Link>

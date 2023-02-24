@@ -2,11 +2,11 @@ import Link from 'next/link';
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
-type Props = {
-	link: string
+interface PropsInterface {
+	link: string;
 };
 
-export default function BackButton({ link }: Props) {
+export default function BackButton({ link }: PropsInterface) {
 	return (
 		<Link 
 			href={link}

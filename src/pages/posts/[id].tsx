@@ -7,9 +7,9 @@ import BackButton from '@/components/BackButton';
 // import Arrow from '@/assets/arrow-left-solid.svg';
 
 
-type PostType = {
-	id: number,
-	contentHtml: string
+interface PostTypeInterface {
+	id: number;
+	contentHtml: string;
 };
 
 // export const getStaticProps: GetStaticProps<{ postData: Post }> = async ({ params }) => {
@@ -32,7 +32,7 @@ export async function getStaticPaths() {
 }
 
 
-export default function Post({ postData }: { postData: PostType}) {
+export default function Post({ postData }: { postData: PostTypeInterface}) {
 	return (
 		<Layout>
 			<BackButton link="/"/>
