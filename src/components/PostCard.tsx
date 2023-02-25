@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import Image from 'next/image';
+import FormatDate from '@/components/FormatDate';
 
 
 interface PostMetaDataInterface {
@@ -9,20 +10,10 @@ interface PostMetaDataInterface {
 	image: string;
 }
 
+
 interface PropsInterface {
 	post: PostMetaDataInterface;
 };
-
-
-function FormatDate({date}: {date: string}) {
-	const dateObj = new Date(date);
-	const formattedDate = new Intl.DateTimeFormat('en-GB', { dateStyle: 'long'}).format(dateObj);
-	return (
-		<div>
-			{formattedDate}
-		</div>
-	);
-}
 
 
 export default function PostCard(props: PropsInterface) {

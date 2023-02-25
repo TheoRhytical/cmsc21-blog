@@ -43,18 +43,19 @@ export async function getPostData(id: number) {
 	const fullPath = path.join(postDirectory, `${id.toString()}.md`);
 	const fileContents = fs.readFileSync(fullPath, 'utf8');
 
-	const matterResult = matter(fileContents);
-	// console.log(matterResult);
+	const { content, data } = matter(fileContents);
+	// console.log('postData', matterResult);
 	const processContent = await remark()
 		.use(html)
-		.process(matterResult.content);
+		.process(content);
 
 	const contentHtml = processContent.toString();
 
 	return {
 		id,
 		contentHtml,
-		...matterResult.data,
+		data
+		// ...matterResult.data,
 	};
 }
 

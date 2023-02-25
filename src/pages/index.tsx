@@ -43,14 +43,12 @@ export async function getStaticProps() {
 
 export default function Home(props: PropsInterface) {
 	const { posts } = props;
-	console.log(posts)
 	return (
 		<Layout>
 			<div style={{
 				display: 'flex',
 			}}>
 			{ posts.map((post: PostMetaDataInterface) => (
-				// console.log(post);
 				<PostCard post={post} />
 			)) }
 			</div>
