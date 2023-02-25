@@ -68,3 +68,7 @@ a {
 	padding: 0.5rem;
 	border-radius: 1rem;
 }
+
+.post-title {
+	font-size: 5rem;
+}
