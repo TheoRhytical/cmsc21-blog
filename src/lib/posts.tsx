@@ -33,6 +33,7 @@ export async function getAllPostMetaData() {
 		const { data: metadata } = matter(fileContents);
 		return {
 			id: key,
+			date: metadata.date,
 			...metadata
 		};
 	});

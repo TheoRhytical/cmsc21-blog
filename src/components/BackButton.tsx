@@ -10,14 +10,8 @@ export default function BackButton({ link }: PropsInterface) {
 	return (
 		<Link 
 			href={link}
+			className='backbutton'
 			style={{
-				backgroundColor: 'red',
-				display: 'grid',
-				placeItems: 'center',
-				height: '4rem',
-				width: '4rem',
-				padding: '0.5rem',
-				borderRadius: '1rem',
 		}}>
 			<FontAwesomeIcon 
 					icon={faArrowLeft}

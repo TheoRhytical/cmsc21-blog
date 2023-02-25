@@ -11,7 +11,9 @@ export default function Layout({ children	}: { children: ReactNode }) {
 			</Head>
 			<div>
 				<Navbar/>
-				{ children }
+				<div style={{ padding: '2rem 7rem'}}>
+					{ children }
+				</div>
 			</div>
 </>
 	);

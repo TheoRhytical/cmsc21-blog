@@ -6,8 +6,9 @@ import { ReactElement } from 'react';
 import BackButton from '@/components/BackButton';
 import FormatDate from '@/components/FormatDate';
 import Image from 'next/image';
-// import Arrow from '@/assets/arrow-left-solid.svg';
+import localFont from '@next/font/local';
 
+const tungstenBold = localFont({ src: '../../assets/fonts/TungstenBold.ttf'});
 
 interface PostTypeInterface {
 	id: number;
@@ -42,11 +43,27 @@ export async function getStaticPaths() {
 export default function Post({ postData }: { postData: PostTypeInterface}) {
 	return (
 		<Layout>
-			<BackButton link="/"/>
-			<h2>{ postData.data.title }</h2>
-			<FormatDate date={postData.data.date}/>
-			<Image src={postData.data.image} alt="image" width={100} height={100} />
-			<article>
+			<div className='post-header'>
+				<BackButton link="/"/>
+				<div 
+					style={{
+						display: 'grid',
+						placeItems: 'center',
+					}}
+				>
+					<h2 className={`${tungstenBold.className} post-title`}>{ postData.data.title }</h2>
+					{/* <h2>{ postData.data.title }</h2> */}
+					<FormatDate date={postData.data.date}/>
+					{/* <div style={{height: "350px", width: "100%", position: 'relative'}}> */}
+						<img src={postData.data.image} style={{ height: '350px', width: 'auto'}}/>
+						{/* <Image src={postData.data.image} alt="image" fill style={{objectFit: 'cover'}}/> */}
+					{/* </div> */}
+				</div>
+			</div>
+			<article style={{
+				padding: '0rem 4rem',
+				textAlign: 'justify'
+			}}>
 				<div dangerouslySetInnerHTML={{ __html: postData.contentHtml }}/>
 			</article>
 			{/* <Arrow/> */}
