@@ -1,8 +1,10 @@
 import Layout from '../components/Layout';
 import { getAllPostMetaData } from '@/lib/posts';
+import PostCard from '@/components/PostCard';
 
 
 interface PostMetaDataInterface {
+	id: number;
 	title: string;
 	date: string;
 	image: string;
@@ -35,15 +37,7 @@ export async function getStaticProps() {
 	}
 }
 
-function FormatDate({date}: {date: string}) {
-	const dateObj = new Date(date);
-	const formattedDate = new Intl.DateTimeFormat('en-GB', { dateStyle: 'long'}).format(dateObj);
-	return (
-		<div>
-			{formattedDate}
-		</div>
-	);
-}
+
 
 
 
@@ -52,17 +46,14 @@ export default function Home(props: PropsInterface) {
 	console.log(posts)
 	return (
 		<Layout>
-			{}
+			<div style={{
+				display: 'flex',
+			}}>
 			{ posts.map((post: PostMetaDataInterface) => (
 				// console.log(post);
-				<>
-					<h2>{post.title}</h2>
-					<div>{post.date}</div>
-					<FormatDate date={post.date} />
-					<div>This is an image: {post.image}</div>
-				</>
+				<PostCard post={post} />
 			)) }
-			Test
+			</div>
 		</Layout>
 	)
 }
