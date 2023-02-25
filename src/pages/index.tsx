@@ -47,7 +47,7 @@ export default function Home(props: PropsInterface) {
 				display: 'flex',
 			}}>
 			{ posts.map((post: PostMetaDataInterface) => (
-				<PostCard post={post} />
+				<PostCard post={post} key={post.id}/>
 			)) }
 			</div>
 		</Layout>
