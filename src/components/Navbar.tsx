@@ -15,6 +15,7 @@ export default function Navbar() {
 				<NavLink link="rhys" text="Rhys Barriga"/>
 				<NavLink link="marfred" text="Marfred Deen"/>
 				<NavLink link="akhyra" text="Akhyra Oplado"/>
+				<NavLink link="login" text="Login" />
 			</ul>
 
 		</div>

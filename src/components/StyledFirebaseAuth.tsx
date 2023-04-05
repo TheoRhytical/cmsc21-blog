@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { onAuthStateChanged } from 'firebase/auth';
 import 'firebaseui/dist/firebaseui.css';
-import {auth} from "firebaseui";
+import { auth } from "firebaseui";
 
 interface Props {
     // The Firebase UI Web UI Config object.
