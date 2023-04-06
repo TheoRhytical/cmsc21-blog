@@ -1,11 +1,8 @@
 import Layout from '@/components/Layout';
 import { getPostData, getAllPostIds } from '@/lib/posts';
-import { GetStaticPaths, GetStaticProps } from 'next';
 import { ParsedUrlQuery } from 'querystring';
-import { ReactElement } from 'react';
 import BackButton from '@/components/BackButton';
 import FormatDate from '@/components/FormatDate';
-import Image from 'next/image';
 import localFont from '@next/font/local';
 
 const tungstenBold = localFont({ src: '../../assets/fonts/TungstenBold.ttf'});
@@ -20,7 +17,6 @@ interface PostTypeInterface {
 	}
 };
 
-// export const getStaticProps: GetStaticProps<{ postData: Post }> = async ({ params }) => {
 export async function getStaticProps({ params }: {params: any}){
 	const postId: number = Number((params as ParsedUrlQuery).id);
 	const postData = await getPostData(postId);
