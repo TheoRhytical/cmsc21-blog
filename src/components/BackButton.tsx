@@ -14,11 +14,11 @@ export default function BackButton({ link }: PropsInterface) {
 			style={{
 		}}>
 			<FontAwesomeIcon 
-					icon={faArrowLeft}
-					style={{
-						fontSize: '4rem',
-						color: 'black'
-					}}
+				icon={faArrowLeft}
+				style={{
+					fontSize: '4rem',
+					color: 'black'
+				}}
 			/>
 		</Link>
 	)
