@@ -3,8 +3,13 @@ import Image from 'next/image';
 import logo from '@/assets/images/logo.png';
 import Banorant from '@/assets/banorant.svg';
 import Link from 'next/link';
+// import { firebaseAuth } from "@/firebase/clientApp";
+// import { useAuthState } from "react-firebase-hooks/auth";
+import { getFirebaseUser } from "@/firebase/clientApp";
 
 export default function Navbar() {
+	const [ user ] = getFirebaseUser();
+	console.log(user);
 	return (
 		<div className="navbar">
 			<Link href="/" className="logo">
@@ -15,7 +20,7 @@ export default function Navbar() {
 				<NavLink link="rhys" text="Rhys Barriga"/>
 				<NavLink link="marfred" text="Marfred Deen"/>
 				<NavLink link="akhyra" text="Akhyra Oplado"/>
-				<NavLink link="login" text="Login" />
+				{ user === null && <NavLink link="login" text="Login" /> }
 			</ul>
 
 		</div>

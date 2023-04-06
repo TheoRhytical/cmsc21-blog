@@ -11,8 +11,7 @@ export default function BackButton({ link }: PropsInterface) {
 		<Link 
 			href={link}
 			className='backbutton'
-			style={{
-		}}>
+		>
 			<FontAwesomeIcon 
 				icon={faArrowLeft}
 				style={{

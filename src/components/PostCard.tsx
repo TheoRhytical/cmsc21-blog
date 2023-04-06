@@ -21,8 +21,8 @@ export default function PostCard(props: PropsInterface) {
 	return (
 		<Link href={`/posts/${post.id}`} className="postcard">
 			<Image src={post.image} alt="image" width={100} height={100} />
-			<h3 style={{marginBottom: '0.25rem'}}>{post.title}</h3>
 			<FormatDate date={post.date} />
+			<h3 style={{marginTop: '0.25rem'}}>{post.title}</h3>
 		</Link>
 	)
 }

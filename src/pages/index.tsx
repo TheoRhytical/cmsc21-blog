@@ -1,6 +1,12 @@
 import Layout from '../components/Layout';
 import { getAllPostMetaData } from '@/lib/posts';
 import PostCard from '@/components/PostCard';
+// import { useAuthState } from 'react-firebase-hooks/auth';
+// import { firebaseAuth } from '@/firebase/clientApp';
+import { getFirebaseUser } from '@/firebase/clientApp';
+import Link from 'next/link';
+import { faPlus } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 
 interface PostMetaDataInterface {
@@ -15,6 +21,7 @@ interface PropsInterface {
 }
 
 
+// Gets posts and sorts by date
 export async function getStaticProps() {
 	const posts = await getAllPostMetaData();
 	posts.sort((a, b) => {
@@ -41,11 +48,28 @@ export async function getStaticProps() {
 
 export default function Home(props: PropsInterface) {
 	const { posts } = props;
+	const [user, loading, error] = getFirebaseUser();
+	// console.log("User", user);
 	return (
 		<Layout>
 			<div style={{
 				display: 'flex',
 			}}>
+				{/* TODO: Add "Create/Add Post" button */}
+
+			{/* { user != null && } */}
+			<Link href="/post/create" className="postcard">
+				<div className="create-post-button">
+					<FontAwesomeIcon 
+						icon={faPlus}
+						style={{
+							fontSize: '4rem',
+							color: 'black'
+						}}
+					/>
+				</div>
+				<h3>Add New Blog Entry</h3>
+			</Link>
 			{ posts.map((post: PostMetaDataInterface) => (
 				<PostCard post={post} key={post.id}/>
 			)) }

@@ -2,7 +2,8 @@
 import { initializeApp } from "firebase/app";
 // import firebase from "firebase/app";
 // import { getAnalytics } from "firebase/analytics";
-// import { getAuth } from "firebase/auth";
+import { getAuth } from "firebase/auth";
+import { useAuthState } from "react-firebase-hooks/auth";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -24,6 +25,12 @@ const firebaseConfig = {
 const firebaseApp = initializeApp(firebaseConfig);
 
 export default firebaseApp;
+
+export const firebaseAuth = getAuth(firebaseApp);
+
+export function getFirebaseUser() {
+  return useAuthState(firebaseAuth);
+}
 // const analytics = getAnalytics(firebaseApp);
 // const auth = getAuth(firebaseApp);
 // }

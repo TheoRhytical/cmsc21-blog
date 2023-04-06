@@ -51,7 +51,17 @@ a {
 }
 
 .postcard {
-	padding: 0.5rem;
+	padding: 0.5rem 1rem;
+	/* max-width: 2; */
+	display: flex;
+	flex-direction: column;
+	text-align: center;
+	width: 9rem;
+}
+
+.postcard > img, .create-post-button {
+	margin-left: auto;
+	margin-right: auto;
 }
 
 .post-header {
@@ -71,4 +81,12 @@ a {
 
 .post-title {
 	font-size: 5rem;
+}
+
+.create-post-button {
+	background-color: var(--navbar-primary-bg);
+	display: grid;
+	place-items: center;
+	height: 100px;
+	width: 100px;
 }

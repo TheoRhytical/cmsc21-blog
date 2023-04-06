@@ -1,8 +1,8 @@
 import Layout from "@/components/Layout";
-import firebaseApp from "@/firebase/clientApp";
+import firebaseApp, { firebaseAuth } from "@/firebase/clientApp";
 // import firebase from 'firebase/app';
 import StyledFirebaseAuth from "@/components/StyledFirebaseAuth";
-import { getAuth, GoogleAuthProvider } from "firebase/auth";
+import { GoogleAuthProvider } from "firebase/auth";
 
 
 // const auth = getAuth(firebaseApp);
@@ -12,8 +12,6 @@ const uiConfig = {
     GoogleAuthProvider.PROVIDER_ID,
   ],
 };
-
-const firebaseAuth = getAuth(firebaseApp);
 
 export default function Login() {
 	return (
