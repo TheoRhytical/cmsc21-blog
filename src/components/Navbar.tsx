@@ -9,7 +9,6 @@ import { getFirebaseUser } from "@/firebase/clientApp";
 
 export default function Navbar() {
 	const [ user ] = getFirebaseUser();
-	console.log(user);
 	return (
 		<div className="navbar">
 			<Link href="/" className="logo">

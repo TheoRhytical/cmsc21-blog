@@ -57,19 +57,26 @@ export default function Home(props: PropsInterface) {
 			}}>
 				{/* TODO: Add "Create/Add Post" button */}
 
-			{/* { user != null && } */}
-			<Link href="/post/create" className="postcard">
-				<div className="create-post-button">
-					<FontAwesomeIcon 
-						icon={faPlus}
-						style={{
-							fontSize: '4rem',
-							color: 'black'
-						}}
-					/>
-				</div>
-				<h3>Add New Blog Entry</h3>
-			</Link>
+			{ user != null && 
+				<Link 
+					href="/posts/create" 
+					className="postcard" 
+				>
+					<div 
+						className="create-post-button"
+						style={{borderRadius: "1rem"}}
+					>
+						<FontAwesomeIcon 
+							icon={faPlus}
+							style={{
+								fontSize: '4rem',
+								color: 'black'
+							}}
+						/>
+					</div>
+					<h3>Add New Blog Entry</h3>
+				</Link>
+			}
 			{ posts.map((post: PostMetaDataInterface) => (
 				<PostCard post={post} key={post.id}/>
 			)) }

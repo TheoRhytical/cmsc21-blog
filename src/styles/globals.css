@@ -3,6 +3,7 @@
 	--navbar-primary-color: #111111;
 	--primary-bg: #2d383a;
 	--primary-color: #ffffff;
+	--primary-border: #2d383a7c;
 }
 
 html, 
@@ -89,4 +90,53 @@ a {
 	place-items: center;
 	height: 100px;
 	width: 100px;
+}
+
+.create-post-form {
+	display: flex;
+	flex-direction: column;
+}
+
+.input-group > input {
+	/* display: block; */
+	width: 100%;
+	padding: 1rem 0.5rem;
+	border: 0.15rem solid var(--primary-border);
+	border-radius: 0.5rem;
+}
+
+.input-group > label {
+	width: 8rem;
+	margin-top: auto;
+	margin-bottom: auto;
+}
+
+.create-post-form {
+	color: var(--navbar-primary-color);
+	background-color: var(--navbar-primary-bg);
+	border-radius: 1rem;
+	padding: 3rem 4rem;
+	max-width: 40rem;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.input-group {
+	display: flex;
+	padding: 0.5rem 0;
+	width: 100%;
+}
+
+.input-group > label {
+	font-weight: bold;
+}
+
+.create-post-form > input[type="submit"] {
+	width: 10rem;
+	margin-left: auto;
+	background-color: var(--primary-bg);
+	color: var(--primary-color);
+	font-size: 1.15rem;
+	border-radius: 0.5rem;
+	padding: 0.5rem 2rem;
 }
