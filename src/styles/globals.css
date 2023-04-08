@@ -103,6 +103,7 @@ a {
 	padding: 1rem 0.5rem;
 	border: 0.15rem solid var(--primary-border);
 	border-radius: 0.5rem;
+	background-color: var(--primary-color);
 }
 
 .input-group > label {
@@ -121,13 +122,25 @@ a {
 	margin-right: auto;
 }
 
-.input-group {
-	display: flex;
+.quill-group, .input-group {
 	padding: 0.5rem 0;
 	width: 100%;
 }
 
-.input-group > label {
+.quill-group > label {
+	margin-top: 2rem;
+}
+
+.quill {
+	background-color: var(--primary-color) !important;
+
+}
+
+.input-group {
+	display: flex;
+}
+
+.create-post-form label {
 	font-weight: bold;
 }
 

@@ -25,7 +25,7 @@ interface PropsInterface {
 export async function getStaticProps() {
 	const posts = await getAllPostMetaData();
 	posts.sort((a, b) => {
-		console.log('post', a, b);
+		// console.log('post', a, b);
 		let fa = a.date.toLowerCase(),
 		fb = b.date.toLowerCase();
 
@@ -57,7 +57,7 @@ export default function Home(props: PropsInterface) {
 			}}>
 				{/* TODO: Add "Create/Add Post" button */}
 
-			{ user != null && 
+			{ user && 
 				<Link 
 					href="/posts/create" 
 					className="postcard" 
