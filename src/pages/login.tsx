@@ -1,8 +1,9 @@
 import Layout from "@/components/Layout";
-import firebaseApp, { firebaseAuth } from "@/firebase/clientApp";
+import firebaseApp, { firebaseAuth, getFirebaseUser } from "@/firebase/clientApp";
 // import firebase from 'firebase/app';
 import StyledFirebaseAuth from "@/components/StyledFirebaseAuth";
 import { GoogleAuthProvider } from "firebase/auth";
+import { useRouter } from "next/router";
 
 
 // const auth = getAuth(firebaseApp);
@@ -14,6 +15,13 @@ const uiConfig = {
 };
 
 export default function Login() {
+	const router = useRouter();
+	const [user, loading, error] = getFirebaseUser();
+	if (typeof window !== 'undefined') {
+		if (user) {
+			router.push("/");
+		}
+	}
 	return (
 		<Layout>
 			<div style={{textAlign: 'center'}}>

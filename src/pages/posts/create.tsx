@@ -32,6 +32,9 @@ export default function Create() {
 
 	const handleSubmit = async (event: any) => {
 		event.preventDefault();
+
+		const userToken = await user!.getIdToken();	
+		// console.log('token', userToken);
 		
 		const data = {
 			title: event.target.title.value,
@@ -46,6 +49,7 @@ export default function Create() {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
+				'Authorization': 'Bearer ' + userToken
       },
       body: JSONdata,
     }
