@@ -1,5 +1,7 @@
 import { NextApiRequest, NextApiResponse, NextApiHandler } from 'next';
-import { auth } from '@/firebase/admin';
+import { defaultAuth } from '@/firebase/admin';
+// import { adminApp } from '@/firebase/admin';
+import { getAuth } from 'firebase/auth';
 
 export function withAuth(handler: NextApiHandler) {
   return async (req: NextApiRequest, res: NextApiResponse) => {
@@ -11,7 +13,7 @@ export function withAuth(handler: NextApiHandler) {
     const token = authHeader.split(' ')[1];
     let decodedToken;
     try {
-      decodedToken = await auth.verifyIdToken(token);
+      decodedToken = await defaultAuth.verifyIdToken(token);
       if (!decodedToken || !decodedToken.uid)
         return res.status(401).end('Not authenticated');
       req.body.uid = decodedToken.uid;

@@ -1,11 +1,13 @@
 import { NextApiRequest, NextApiResponse } from 'next';
-import { getFirestore, addDoc, collection } from 'firebase/firestore';
-import firebaseApp, { getFirebaseUser } from '@/firebase/clientApp';
+// import { getFirestore, addDoc, collection } from 'firebase/firestore';
 import { withAuth } from '@/lib/middleware/withAuth';
-import { firestore } from '@/firebase/admin';
+import { defaultFirestore } from '@/firebase/admin';
+import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
+import firebase from 'firebase-admin/app';
+import { Timestamp } from 'firebase-admin/firestore';
 
 
-async function handler(req: NextApiRequest, res: NextApiResponse){
+function handler(req: NextApiRequest, res: NextApiResponse){
 	if (req.method !== 'POST') {
 		res.status(405).json({
 			message: 'Only POST requests'
@@ -16,21 +18,22 @@ async function handler(req: NextApiRequest, res: NextApiResponse){
 	 * TODO: add validation
 	 */
 
-	// const db = getFirestore(firebaseApp);
 	const body = req.body;
 
-	try {
-		// await firestore.collection('')
-		// const ref = firestore.ref('')
-		// const docRef = await addDoc(collection(db, "users"), {
-    // title: 
-    // last: "Lovelace",
-    // born: 1815
-  // });
-  // console.log("Document written with ID: ", docRef.id);
-	} catch (err) {
-
-	}
+	defaultFirestore.collection("posts").add({
+		title: body.title,
+		img: '',
+		content: body.content,
+		uploaderUuid: body.uid,
+		uploadDate: Timestamp.now()
+	}).then(docRef => {
+		console.log("Document written to `posts` with ID: " + docRef.id);
+	}).catch(err => {
+		console.log("Error writing to `posts`", err);
+		res.status(500).json({
+			message: "Error uploading new blog entry"
+		});
+	});
 
 	// console.log('body: ', body);
 
