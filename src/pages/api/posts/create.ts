@@ -21,7 +21,7 @@ async function handler(req: NextApiRequest, res: NextApiResponse){
 
 	try {
 		// await firestore.collection('')
-		const ref = firestore.ref('')
+		// const ref = firestore.ref('')
 		// const docRef = await addDoc(collection(db, "users"), {
     // title: 
     // last: "Lovelace",
