@@ -19,7 +19,7 @@ export default function Navbar() {
 				<NavLink link="rhys" text="Rhys Barriga"/>
 				<NavLink link="marfred" text="Marfred Deen"/>
 				<NavLink link="akhyra" text="Akhyra Oplado"/>
-				{ user === null && <NavLink link="login" text="Login" /> }
+				{ user === null && <NavLink link="/login" text="Login" /> }
 			</ul>
 
 		</div>
