@@ -1,12 +1,10 @@
 import Layout from "@/components/Layout";
-import firebaseApp, { firebaseAuth, getFirebaseUser } from "@/firebase/clientApp";
-// import firebase from 'firebase/app';
+import { firebaseAuth, getFirebaseUser } from "@/firebase/clientApp";
 import StyledFirebaseAuth from "@/components/StyledFirebaseAuth";
 import { GoogleAuthProvider } from "firebase/auth";
 import { useRouter } from "next/router";
 
 
-// const auth = getAuth(firebaseApp);
 const uiConfig = {
 	signInSuccessUrl: '/',
   signInOptions: [

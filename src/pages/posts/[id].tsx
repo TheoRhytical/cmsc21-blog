@@ -48,12 +48,8 @@ export default function Post({ postData }: { postData: PostTypeInterface}) {
 					}}
 				>
 					<h2 className={`${tungstenBold.className} post-title`}>{ postData.data.title }</h2>
-					{/* <h2>{ postData.data.title }</h2> */}
 					<FormatDate date={postData.data.date}/>
-					{/* <div style={{height: "350px", width: "100%", position: 'relative'}}> */}
 						<img src={postData.data.image} style={{ height: '350px', width: 'auto'}}/>
-						{/* <Image src={postData.data.image} alt="image" fill style={{objectFit: 'cover'}}/> */}
-					{/* </div> */}
 				</div>
 			</div>
 			<article style={{
@@ -62,7 +58,6 @@ export default function Post({ postData }: { postData: PostTypeInterface}) {
 			}}>
 				<div dangerouslySetInnerHTML={{ __html: postData.contentHtml }}/>
 			</article>
-			{/* <Arrow/> */}
 		</Layout>
 	);
 }

@@ -3,8 +3,6 @@ import Image from 'next/image';
 import logo from '@/assets/images/logo.png';
 import Banorant from '@/assets/banorant.svg';
 import Link from 'next/link';
-// import { firebaseAuth } from "@/firebase/clientApp";
-// import { useAuthState } from "react-firebase-hooks/auth";
 import { getFirebaseUser } from "@/firebase/clientApp";
 
 export default function Navbar() {

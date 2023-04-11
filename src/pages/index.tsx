@@ -1,8 +1,6 @@
 import Layout from '../components/Layout';
 import { getAllPostMetaData } from '@/lib/posts';
 import PostCard from '@/components/PostCard';
-// import { useAuthState } from 'react-firebase-hooks/auth';
-// import { firebaseAuth } from '@/firebase/clientApp';
 import { getFirebaseUser } from '@/firebase/clientApp';
 import Link from 'next/link';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
@@ -25,7 +23,6 @@ interface PropsInterface {
 export async function getStaticProps() {
 	const posts = await getAllPostMetaData();
 	posts.sort((a, b) => {
-		// console.log('post', a, b);
 		let fa = a.date.toLowerCase(),
 		fb = b.date.toLowerCase();
 
@@ -49,14 +46,11 @@ export async function getStaticProps() {
 export default function Home(props: PropsInterface) {
 	const { posts } = props;
 	const [user, loading, error] = getFirebaseUser();
-	// console.log("User", user);
 	return (
 		<Layout>
 			<div style={{
 				display: 'flex',
 			}}>
-				{/* TODO: Add "Create/Add Post" button */}
-
 			{ user && 
 				<Link 
 					href="/posts/create" 

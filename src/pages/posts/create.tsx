@@ -69,8 +69,6 @@ export default function Create() {
 
 			<form 
 				onSubmit={handleSubmit} 
-				// action="/api/posts/create"
-				// method="post"
 				className="create-post-form">
 				<div className="input-group">
 					<label htmlFor="title">Post Title: </label>
@@ -102,9 +100,6 @@ export default function Create() {
 						value={contentValue}
 						/>
 					<ReactQuill theme="snow" onChange={setContentValue}/>
-						{/* <div id="quill-area">test</div> */}
-						{/* <textarea name="content" id="content" rows={10}></textarea> */}
-					{/* </ReactQuill> */}
 				</div>
 
 				<input 

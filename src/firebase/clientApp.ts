@@ -1,7 +1,5 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
-// import firebase from "firebase/app";
-// import { getAnalytics } from "firebase/analytics";
 import { getAuth } from "firebase/auth";
 import { useAuthState } from "react-firebase-hooks/auth";
 // TODO: Add SDKs for Firebase products that you want to use
@@ -21,7 +19,6 @@ const firebaseConfig = {
 
 // Initialize Firebase
 
-// if (!firebase.getApp.length) {
 const firebaseApp = initializeApp(firebaseConfig);
 
 export default firebaseApp;
@@ -32,5 +29,3 @@ export function getFirebaseUser() {
   return useAuthState(firebaseAuth);
 }
 // const analytics = getAnalytics(firebaseApp);
-// const auth = getAuth(firebaseApp);
-// }

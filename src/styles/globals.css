@@ -43,7 +43,6 @@ body {
 
 body {
 	margin: 0rem;
-	/* padding: 3rem 5rem; */
 }
 
 a {
@@ -53,7 +52,6 @@ a {
 
 .postcard {
 	padding: 0.5rem 1rem;
-	/* max-width: 2; */
 	display: flex;
 	flex-direction: column;
 	text-align: center;
@@ -98,7 +96,6 @@ a {
 }
 
 .input-group > input {
-	/* display: block; */
 	width: 100%;
 	padding: 1rem 0.5rem;
 	border: 0.15rem solid var(--primary-border);
