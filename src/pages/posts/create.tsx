@@ -6,6 +6,7 @@ import "react-quill/dist/quill.snow.css";
 import { useState } from "react";
 import { useRouter } from "next/router";
 import { getFirebaseUser } from "@/firebase/clientApp";
+import axios from "axios";
 
 
 const tungstenBold = localFont({ src: '../../assets/fonts/TungstenBold.ttf'});
@@ -30,35 +31,26 @@ export default function Create() {
 	}
 	const [contentValue, setContentValue] = useState('');
 
-	const handleSubmit = async (event: any) => {
+	const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
 		event.preventDefault();
 
 		const userToken = await user!.getIdToken();	
-		// console.log('token', userToken);
+
+		const form: HTMLFormElement = event.target as HTMLFormElement;
+		const formData = new FormData(form);
 		
-		const data = {
-			title: event.target.title.value,
-			img: event.target.img.value,
-			content: event.target.content.value
-		}
-
-		const JSONdata = JSON.stringify(data);
-		const endpoint = '/api/posts/create'
-
-    const options = {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-				'Authorization': 'Bearer ' + userToken
-      },
-      body: JSONdata,
-    }
-
     // Send the form data to our forms API on Vercel and get a response.
-    const response = await fetch(endpoint, options)
-
-		const result = await response.json();
-		console.log('result', result);
+		const endpoint = '/api/posts/create'
+		axios.post(endpoint, formData, {
+			headers: {
+				"Content-Type": "multipart/form-data",
+				"Authorization": "Bearer " + userToken
+			}
+		}).then(res => {
+			console.log('response', res);
+		}).catch(err => { 
+			console.log('error', err);
+		});
 	}
 
 	return (

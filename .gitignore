@@ -37,3 +37,6 @@ next-env.d.ts
 
 # firebase
 src/firebase/*.json
+
+# uploads
+/public/uploads/

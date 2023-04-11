@@ -1,7 +1,5 @@
 import { NextApiRequest, NextApiResponse, NextApiHandler } from 'next';
 import { defaultAuth } from '@/firebase/admin';
-// import { adminApp } from '@/firebase/admin';
-import { getAuth } from 'firebase/auth';
 
 export function withAuth(handler: NextApiHandler) {
   return async (req: NextApiRequest, res: NextApiResponse) => {
