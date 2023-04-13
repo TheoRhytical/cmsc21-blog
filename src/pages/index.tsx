@@ -1,7 +1,7 @@
 import Layout from '../components/Layout';
 import { getAllPostMetaData } from '@/lib/posts';
 import PostCard from '@/components/PostCard';
-import { getFirebaseUser } from '@/firebase/clientApp';
+import { useGetFirebaseUser } from '@/firebase/clientApp';
 import Link from 'next/link';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -54,7 +54,7 @@ export async function getStaticProps() {
 
 export default function Home(props: PropsInterface) {
 	const { posts } = props;
-	const [user, loading, error] = getFirebaseUser();
+	const [user, loading, error] = useGetFirebaseUser();
 	return (
 		<Layout>
 			<div style={{

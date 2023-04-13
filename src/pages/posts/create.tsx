@@ -5,7 +5,7 @@ import dynamic from "next/dynamic";
 import "react-quill/dist/quill.snow.css";
 import { useState } from "react";
 import { useRouter } from "next/router";
-import { getFirebaseUser } from "@/firebase/clientApp";
+import { useGetFirebaseUser } from "@/firebase/clientApp";
 import axios from "axios";
 
 
@@ -20,7 +20,7 @@ const ReactQuill = dynamic(import('react-quill'), {
 
 export default function Create() {
 	const router = useRouter();
-	const [user, loading, error] = getFirebaseUser();
+	const [user, loading, error] = useGetFirebaseUser();
 	// console.log(user);
 
 	// Redirect if not user is logged in

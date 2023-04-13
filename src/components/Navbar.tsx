@@ -3,10 +3,10 @@ import Image from 'next/image';
 import logo from '@/assets/images/logo.png';
 import Banorant from '@/assets/banorant.svg';
 import Link from 'next/link';
-import { getFirebaseUser } from "@/firebase/clientApp";
+import { useGetFirebaseUser } from "@/firebase/clientApp";
 
 export default function Navbar() {
-	const [ user ] = getFirebaseUser();
+	const [ user ] = useGetFirebaseUser();
 	return (
 		<div className="navbar">
 			<Link href="/" className="logo">

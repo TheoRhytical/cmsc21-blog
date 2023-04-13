@@ -26,7 +26,7 @@ export default firebaseApp;
 
 export const firebaseAuth = getAuth(firebaseApp);
 
-export function getFirebaseUser() {
+export function useGetFirebaseUser() {
   return useAuthState(firebaseAuth);
 }
 // const analytics = getAnalytics(firebaseApp);

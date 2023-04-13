@@ -1,5 +1,5 @@
 import Layout from "@/components/Layout";
-import { firebaseAuth, getFirebaseUser } from "@/firebase/clientApp";
+import { firebaseAuth, useGetFirebaseUser } from "@/firebase/clientApp";
 import StyledFirebaseAuth from "@/components/StyledFirebaseAuth";
 import { GoogleAuthProvider } from "firebase/auth";
 import { useRouter } from "next/router";
@@ -14,7 +14,7 @@ const uiConfig = {
 
 export default function Login() {
 	const router = useRouter();
-	const [user, loading, error] = getFirebaseUser();
+	const [user, loading, error] = useGetFirebaseUser();
 	if (typeof window !== 'undefined') {
 		if (user) {
 			router.push("/");
