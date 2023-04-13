@@ -1,6 +1,6 @@
 import Layout from '../components/Layout';
 import { getAllPostMetaData } from '@/lib/posts';
-import PostCard, { FirebasePostCard } from '@/components/PostCard';
+import PostCard from '@/components/PostCard';
 import { getFirebaseUser } from '@/firebase/clientApp';
 import Link from 'next/link';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
@@ -11,13 +11,6 @@ import { Timestamp } from 'firebase/firestore';
 
 
 interface PostMetaDataInterface {
-	id: number;
-	title: string;
-	date: string;
-	image: string;
-}
-
-interface FirebasePostMetaDataInterface {
 	id: string;
 	title: string;
 	date: string;
@@ -25,7 +18,6 @@ interface FirebasePostMetaDataInterface {
 }
 
 interface PropsInterface {
-	firebasePosts: FirebasePostMetaDataInterface[];
 	posts: PostMetaDataInterface[];
 }
 
@@ -35,7 +27,7 @@ export async function getStaticProps() {
 	const postRef = collection(db, "posts");
 	const postsQuery = query(postRef, orderBy("uploadDate", "desc"));
 	const querySnapshot = await getDocs(postsQuery);
-	let firebasePosts: FirebasePostMetaDataInterface[] = [];
+	let posts: PostMetaDataInterface[] = [];
 	querySnapshot.forEach(post => {
 		const postData = post.data();
 		const dateOptions = {
@@ -44,32 +36,16 @@ export async function getStaticProps() {
 			day: "numeric"
 		}
 
-		firebasePosts.push({
+		posts.push({
 			id: post.id,
 			date: postData.uploadDate.toDate().toLocaleDateString("en-US", dateOptions),
 			title: postData.title,
 			image: postData.img
 		})
 	})
-	console.log(firebasePosts);
-	const posts = await getAllPostMetaData();
-	console.log(posts);
-	posts.sort((a, b) => {
-		let fa = a.date.toLowerCase(),
-		fb = b.date.toLowerCase();
-
-    if (fa < fb) {
-        return 1;
-    }
-    if (fa > fb) {
-        return -1;
-    }
-    return 0;
-	});
 
 	return {
 		props: {
-			firebasePosts,
 			posts
 		}
 	}
@@ -77,7 +53,7 @@ export async function getStaticProps() {
 
 
 export default function Home(props: PropsInterface) {
-	const { firebasePosts, posts } = props;
+	const { posts } = props;
 	const [user, loading, error] = getFirebaseUser();
 	return (
 		<Layout>
@@ -104,11 +80,8 @@ export default function Home(props: PropsInterface) {
 					<h3>Add New Blog Entry</h3>
 				</Link>
 			}
-			{ firebasePosts.map((post: FirebasePostMetaDataInterface) => (
-				<FirebasePostCard firebasePost={post} key={post.id} />
-			)) }
 			{ posts.map((post: PostMetaDataInterface) => (
-				<PostCard post={post} key={post.id}/>
+				<PostCard post={post} key={post.id} />
 			)) }
 			</div>
 		</Layout>

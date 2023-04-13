@@ -17,7 +17,6 @@ const upload = multer({
 	storage: multer.diskStorage({
 		destination: './public/uploads/posts/',
     filename: (req, file, cb) => {
-			console.log('file:', file.filename, file.fieldname, file);
 			const fileExt = file.originalname.split('.')[1]
 			const title = req.body.title.replace(/[^A-Za-z0-9]/g, '');
 			filename = `${title}${Date.now()}.${fileExt}`;
