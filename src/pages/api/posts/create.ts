@@ -33,6 +33,7 @@ const router = createRouter<NextApiRequest & {url: string}, NextApiResponse>();
 router
 	.use(upload.single('img') as any)
 	.use(async (req, res, next) => {
+		console.log("PROD TEST: creds:", process.env.PROJECT_ID);
 		const authHeader = req.headers.authorization;
     if (!authHeader) {
       return res.status(401).end('Not authenticated. No Auth header');
@@ -57,6 +58,7 @@ router
 		next();
 	})
 	.post((req, res) => {
+		console.log("PROD TEST: creds:", `|${process.env.PROJECT_ID}|`);
 		const body = req.body;
 		defaultFirestore.collection("posts").add({
 			title: body.title,
