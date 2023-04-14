@@ -9,6 +9,7 @@ export function getAdminApp() {
 	if (apps.length > 0) {
 		return getApp();
 	}
+	console.log("PROD TEST: creds:", process.env.PROJECT_ID);
 	return initializeApp({
 		credential: credential.cert({
 			projectId: process.env.PROJECT_ID,
